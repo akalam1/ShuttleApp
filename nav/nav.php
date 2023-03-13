@@ -96,7 +96,7 @@
       <a href="#">Home</a>
       <a href="#">About</a>
       <a href="#">Schedule</a>
-      <a href="../Login/login.php">Account</a>
+      <a href="../ShuttleApp/Login/login.php">Account</a>
       <div class="animation start-Home"></div>
     </nav>
   </div>

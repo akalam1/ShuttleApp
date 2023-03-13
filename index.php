@@ -1,8 +1,6 @@
 <?php
 include_once('./nav/nav.php');
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +13,10 @@ include_once('./nav/nav.php');
 </head>
 
 <body>
-  <h1>Welcome Shahhhhhhhhhh</h1>
+  <center>
+    <h1>Welcome</h1>
+  </center>
+
 </body>
 
 </html>
