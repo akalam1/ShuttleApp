@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function submitForm() {
+        // get form data
+        var message = document.getElementById("message").value;
+
+        // create AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            // handle response from server
+            document.getElementById("result").innerHTML = this.responseText;
+          }
+        };
+        xhr.open("POST", "../home/webpage.php", true);
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send("message=" + message);
+
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form onsubmit="return submitForm()">
+      <label for="message">Notification Message:</label>
+      <input type="text" id="message" name="message" />
+      <input type="submit" value="Send Notification" />
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>

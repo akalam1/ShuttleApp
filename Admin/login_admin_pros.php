@@ -36,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // // this checks the inserted data as well the credential from the backend, if it matches, it gives the welcome message/ will forward you to the main page
 
                 if ($data = ($email == $row["emailAddress"] &&  $pass == $row["password"])) {
-                    // header('location: ../index.php');
+                    header('location: AdminPage.php');
 
 
-                    echo "welcome";
+                    // echo "welcome";
                 } else {
                     header("Location:login.php?invalid_login=true");
                     echo "Invalid";

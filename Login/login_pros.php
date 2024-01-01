@@ -1,5 +1,7 @@
 
     <?php
+    // Start the session
+    session_start();
 
     // Include config file
     require_once "db_connect.php";
@@ -24,22 +26,31 @@
             // echo "The pass is: " . $pass;
 
 
-            $sql = "SELECT firstName, emailAddress, password FROM customers  WHERE emailAddress ='$email'";
+            $sql = "SELECT customerID, firstName, emailAddress, password FROM customers  WHERE emailAddress ='$email'";
             $result = $con->query($sql);
             echo "<br>";
             if (mysqli_num_rows($result) > 0) {
                 // output data of each row
-                //getting data from the db and displaying it 
+
                 while ($row = mysqli_fetch_assoc($result)) {
                     // echo "<br>";
                     // echo "Name: " . $row["firstName"] . " ,  Email: " . $row["emailAddress"] . ", password: " . $row["password"] . "<br>";
                     // // this checks the inserted data as well the credential from the backend, if it matches, it gives the welcome message/ will forward you to the main page
 
                     if ($data = ($email == $row["emailAddress"] &&  $pass == $row["password"])) {
-                        header('location: ../index.php');
+                        // Store the user ID in the session
+                        $_SESSION['user_id'] = $row["customerID"];
+
+                        // store the user's information in session variables
+                        $_SESSION['username'] = $row["emailAddress"];
+                        $_SESSION['password'] = $row["password"];
 
 
-                        echo "welcome";
+                        header('location: ../home/webpage.php ');
+
+
+                        echo "Welcome";
+                        echo "userid" . $row["customerID"];
                     } else {
                         header("Location:login.php?invalid_login=true");
                         echo "Invalid";
